@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+//the glue between react and redux
+import { connect } from 'react-redux';
 
-export default class BookList extends Component {
+class BookList extends Component {
   renderList() {
     return this.props.books.map((book) => {
       return (
-        <li key={book.title} className="list-group-item">{this.book.title}</li>
+        <li key={book.title} className="list-group-item">{book.title}</li>
       )
     })
   }
@@ -16,3 +18,12 @@ export default class BookList extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  //whatever is returned wil show up as props inside of Booklist
+  return {
+    books:state.books
+  }
+}
+
+export default connect (mapStateToProps)(BookList);
