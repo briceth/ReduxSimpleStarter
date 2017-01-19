@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 //the glue between react and redux
 import { connect } from 'react-redux';
+import { selectBook } from '../actions/index';
+import { bindActionCreators } from 'redux';
+
 
 class BookList extends Component {
   renderList() {
@@ -19,11 +22,22 @@ class BookList extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
+  // console.log(state.books[0].title) return an array of object
   //whatever is returned wil show up as props inside of Booklist
   return {
     books:state.books
   }
+  //the books key is now a property (props) of BookList component
 }
 
-export default connect (mapStateToProps)(BookList);
+const mapDispatchToProps = dispatch => {
+  //whenever selectbook is called, the result should pass to all our reducers
+  // thanks to dispatch
+  return bindActionCreators({ selectBook: selectBook }, dispatch)
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(BookList);
+
+//console.log(mapStateToProps)
+//console.log(BookList)

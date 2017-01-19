@@ -1,4 +1,4 @@
-export default function() {
+export default () => {
   return [
     { title: 'Javascript: the good part'},
     { title: 'Ruby on Rails'},
