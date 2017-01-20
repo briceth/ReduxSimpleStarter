@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import BooksReducer from './reducerBooks';
+import ReducerBook from './reducerBooks';
+import ActiveBook from './reducer_active_book';
 
 const rootReducer = combineReducers({
-  books: BooksReducer
+  books: ReducerBook,
+  activeBook: ActiveBook
 })
-//console.log(BooksReducer) return a function that return an array of hash
+//console.log(ReducerBook) //return a function that return an array of hash
 
 export default rootReducer;
